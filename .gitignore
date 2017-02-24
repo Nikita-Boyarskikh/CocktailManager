@@ -12,3 +12,4 @@ migrations/
 
 *.info
 *.log
+.idea

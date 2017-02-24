@@ -1,0 +1,12 @@
+[Unit]
+Description=gunicorn daemon
+After=network.target
+
+[Service]
+User=www-data
+Group=www-data
+WorkingDirectory=/app/bar
+ExecStart=/usr/local/bin/gunicorn --workers 3 --bind unix:cocktail.sock --access-logfile=/app/bar/log/gaccess.log --log-file=/app/bar/log/gerror.log --log-level=debug --max-requests=1024 uwsgi:app
+
+[Install]
+WantedBy=multi-user.target
